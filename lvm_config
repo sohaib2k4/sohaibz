@@ -1,0 +1,29 @@
+---
+- name: create VG,LV and mount the disk
+  hosts: all
+
+  tasks:
+   - name: creating new LVM logical volume
+
+     lvg:
+      vg: "{{ vg }}"
+      pvs: "{{ pv }}"
+   - name: Create LVM logical Volume for "{{ mp }}" file system.
+     lvol:
+       vg: "{{ vg }}"
+       lv: "{{ lv }}" ## Name of Logical volume need to be created
+       pvs: "{{ pv }}"
+       size: 512m
+
+   - name: Create the file system on newly created Logical volume for "{{ mp }}".
+     filesystem:
+      fstype: "{{ fs }}" ## What type of filesystem required eg:(ext3, ext4, xfs etc.)
+      dev: "/dev/mapper/{{ vg }}-{{ lv }}" ## Full related path of device mapper to be created with creating FS.
+
+   - name: Mount the created filesystem ## This is to create the FSTAB entry and mount the Filesystem.
+     mount:
+      path: "{{ mp }}" ## Mount point where to mount the FS.
+      src: "/dev/mapper/{{ vg }}-{{ lv }}" ## Full related path of device mapper to be mounted under mount point.
+      fstype: "{{ fs }}" ## Filesystem type
+#      iopts: rw,noatime,noexec,nodev,nosuid ## Mount options
+      state: mounted
