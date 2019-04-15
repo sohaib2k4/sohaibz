@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.8">
+<title>Monitoring</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Uncomment @import statement below to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+script{display:none!important}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:transparent}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+dfn{font-style:italic}
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:none}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
+pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock pre.nowrap,.literalblock pre.nowrap pre,.listingblock pre.nowrap,.listingblock pre.nowrap pre{white-space:pre;word-wrap:normal}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:#999}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
+table.pyhltable td.code{padding-left:.75em;padding-right:0}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #dddddf}
+pre.pygments .lineno{display:inline-block;margin-right:.25em}
+table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin:0 0 1.25em;padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+table.tableblock{max-width:100%;border-collapse:separate}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd){background:#f8f8f7}
+table.stripes-none tr,table.stripes-odd tr:nth-of-type(even){background:none}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+td>div.verse{white-space:pre}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1>Monitoring</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_cluster-monitoring">Cluster monitoring</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="about-cluster-monitoring">About cluster monitoring</h3>
+<div class="paragraph">
+<p>OpenShift Enterprise includes a pre-configured, pre-installed, and self-updating monitoring stack that is based on the <a href="https://prometheus.io/">Prometheus</a> open source project and its wider eco-system. It provides monitoring of cluster components and includes a set of alerts to immediately notify the cluster administrator about any occurring problems and a set of <a href="https://grafana.com/">Grafana</a> dashboards. The cluster monitoring stack is only supported for monitoring OpenShift Enterprise clusters.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>To ensure compatibility with future OpenShift Enterprise updates, configuring only the specified monitoring stack options is supported.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="monitoring-stack-components-and-monitored-targets-about-monitoring">Stack components and monitored targets</h4>
+<div class="paragraph">
+<p>The monitoring stack includes these components:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cluster Monitoring Operator</p>
+</li>
+<li>
+<p>Prometheus Operator</p>
+</li>
+<li>
+<p>Prometheus</p>
+</li>
+<li>
+<p>Prometheus Adapter</p>
+</li>
+<li>
+<p>Alertmanager</p>
+</li>
+<li>
+<p><code>kube-state-metrics</code></p>
+</li>
+<li>
+<p><code>node-exporter</code></p>
+</li>
+<li>
+<p>Grafana</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The OpenShift Enterprise Cluster Monitoring Operator (CMO) is the central component of the stack. It controls the deployed monitoring components and resources and ensures that they are always up to date.</p>
+</div>
+<div class="paragraph">
+<p>The Prometheus Operator (PO) creates, configures, and manages Prometheus and Alertmanager instances. It also automatically generates monitoring target configurations based on familiar Kubernetes label queries.</p>
+</div>
+<div class="paragraph">
+<p>The Prometheus Adapter exposes cluster resource metrics API for horizontal pod autoscaling. Resource metrics are CPU and memory utilization.</p>
+</div>
+<div class="paragraph">
+<p><code>node-exporter</code> is an agent deployed on every node to collect metrics about it.</p>
+</div>
+<div class="paragraph">
+<p>The <code>kube-state-metrics</code> exporter agent converts Kubernetes objects to metrics that Prometheus can use.</p>
+</div>
+<div class="paragraph">
+<p>All the components of the monitoring stack are monitored by the stack and are automatically updated when OpenShift Enterprise is updated.</p>
+</div>
+<div class="paragraph">
+<p>In addition to the components of the stack itself, the monitoring stack monitors:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>cluster-version-operator</code></p>
+</li>
+<li>
+<p><code>image-registry</code></p>
+</li>
+<li>
+<p><code>kube-apiserver</code></p>
+</li>
+<li>
+<p><code>kube-apiserver-operator</code></p>
+</li>
+<li>
+<p><code>kube-controller-manager</code></p>
+</li>
+<li>
+<p><code>kube-controller-manager-operator</code></p>
+</li>
+<li>
+<p><code>kube-scheduler</code></p>
+</li>
+<li>
+<p><code>kubelet</code></p>
+</li>
+<li>
+<p><code>monitor-sdn</code></p>
+</li>
+<li>
+<p><code>openshift-apiserver</code></p>
+</li>
+<li>
+<p><code>openshift-apiserver-operator</code></p>
+</li>
+<li>
+<p><code>openshift-controller-manager</code></p>
+</li>
+<li>
+<p><code>openshift-controller-manager-operator</code></p>
+</li>
+<li>
+<p><code>openshift-svcat-controller-manager-operator</code></p>
+</li>
+<li>
+<p><code>telemeter-client</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Other OpenShift Enterprise framework components might be exposing metrics as well. For details, see their respective documentation.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-the-monitoring-stack">Configuring the monitoring stack</h3>
+<div class="paragraph">
+<p>Prior to OpenShift Enterprise 4, the Prometheus Cluster Monitoring stack was configured through the Ansible inventory file. For that purpose, the stack exposed a subset of its available configuration options as Ansible variables. You configured the stack before you installed OpenShift Enterprise.</p>
+</div>
+<div class="paragraph">
+<p>In OpenShift Enterprise 4, Ansible is not the primary technology to install OpenShift Enterprise anymore. The installer only provides a very low number of configuration options pre-installation. Configuring most OpenShift framework components, including the Prometheus Cluster Monitoring stack, happens post-installation.</p>
+</div>
+<div class="paragraph">
+<p>This section explains what configuration is supported, shows how to configure the monitoring stack, and demonstrates several common configuration scenarios.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>The monitoring stack imposes additional resource requirements. Consult the computing resources recommendations in <a href="https://access.redhat.com/documentation/en-us/openshift_enterprise/4.0/html-single/scalability_and_performance/#scaling-cluster-monitoring-operator">Scaling the Cluster Monitoring Operator</a> and verify that you have sufficient resources.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="maintenance-and-support-configuring-monitoring">Maintenance and support</h4>
+<div class="paragraph">
+<p>The supported way of configuring OpenShift Enterprise Monitoring is by configuring it using the options described in this document. <strong>Do not use other configuration, it is unsupported.</strong> The reason is that configuration paradigms might change across Prometheus releases, and such cases can only be handled gracefully if all configuration possibilities are controlled. If you use other configuration than is described in this section, your changes will dissappear, because the cluster-monitoring-operator reconciles any differences. It is by default and by design that the operator reverses everything to the defined state.</p>
+</div>
+<div class="paragraph">
+<p>Explicitly unsupported cases include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Creating additional <code>ServiceMonitor</code> objects in the <code>openshift-monitoring</code> namespace.</strong> This extends the targets the cluster monitoring Prometheus instance scrapes, which can cause collisions and load differences that cannot be accounted for. This makes the Prometheus setup can be unstable.</p>
+</li>
+<li>
+<p><strong>Creating additional apart from expected <code>ConfigMap</code> objects or prometheus rule objects.</strong> This causes the cluster monitoring Prometheus instance to include additional alerting and recording rules.</p>
+</li>
+<li>
+<p><strong>Modifying resources of the stack.</strong> The Prometheus Monitoring Stack ensures its resources are always in the state it expects them to be. If they are modified, the stack will reset them.</p>
+</li>
+<li>
+<p><strong>Using resources of the stack for your purposes.</strong> The resources created by the Prometheus Cluster Monitoring stack are not meant to be used by any other resources, as there are no guarantees about their backward compatibility.</p>
+</li>
+<li>
+<p><strong>Adding new alerting rules.</strong></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="creating-cluster-monitoring-configmap-configuring-monitoring">Creating cluster monitoring ConfigMap</h4>
+<div class="paragraph">
+<p>To configure the Prometheus Cluster Monitoring stack, you need to create the cluster monitoring Configmap.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>An installed <code>oc</code> CLI tool</p>
+</li>
+<li>
+<p>Administrative privileges for the cluster</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Check whether the <code>cluster-monitoring-config</code> ConfigMap object exists:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc -n openshift-monitoring get configmaps cluster-monitoring-config</pre>
+</div>
+</div>
+</li>
+<li>
+<p>If it does not exist, create it:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc -n openshift-monitoring create configmap cluster-monitoring-config</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start editing the <code>cluster-monitoring-config</code> ConfigMap:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc -n openshift-monitoring edit configmap cluster-monitoring-config</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create the <code>data</code> section if it does not exist yet:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">data:
+ config.yaml: |</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-the-cluster-monitoring-stack-configuring-monitoring">Configuring the cluster monitoring stack</h4>
+<div class="paragraph">
+<p>You can configure the Prometheus Cluster Monitoring stack using ConfigMaps. ConfigMaps configure the Cluster Monitoring Operator, which in turn configures components of the stack.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>Make sure you have the <code>cluster-monitoring-config</code> ConfigMap object with the <code>data/config.yaml</code> section.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Start editing the <code>cluster-monitoring-config</code> ConfigMap:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc -n openshift-monitoring edit configmap cluster-monitoring-config</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Put your configuration under <code>data/config.yaml</code> as key-value pair <code>&lt;component_name&gt;:&#160;&lt;component_configuration&gt;</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">data:
+ config.yaml: |
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+   name: <strong>cluster-monitoring-config</strong>
+   namespace: <strong>openshift-monitoring</strong>
+  data:
+   config.yaml: |
+     <strong><em>component</em></strong>:
+       <strong><em>configuration for the component</em></strong></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Substitute <code>&lt;component&gt;</code> and <code>&lt;configuration for the component&gt;</code> accordingly.</p>
+</div>
+<div class="paragraph">
+<p>For example, create this ConfigMap to configure a Persistent Volume Claim (PVC) for Prometheus:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">data:
+ config.yaml: |
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+   name: cluster-monitoring-config
+   namespace: openshift-monitoring
+  data:
+   config.yaml: |
+     <strong>prometheusK8s</strong>:
+       <strong>volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 40Gi</strong></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, <strong>prometheusK8s</strong> defines the Prometheus component and the following lines define its configuration.</p>
+</div>
+</li>
+<li>
+<p>Apply the new configuration:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc -n openshift-monitoring apply configmap cluster-monitoring-config</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configurable-monitoring-components-configuring-monitoring">Configurable monitoring components</h4>
+<div class="paragraph">
+<p>This table shows the monitoring components you can configure and the keys used to specify the components in the ConfigMap:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Configurable monitoring components</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Component</th>
+<th class="tableblock halign-left valign-top">Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prometheus Operator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>prometheusOperator</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prometheus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>prometheusK8s</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alertmanager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>alertmanagerMain</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kube-state-metrics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>kubeStateMetrics</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Grafana</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>grafana</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Telemeter Client</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>telemeterClient</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prometheus Adapter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>k8sPrometheusAdapter</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>From this list, only Prometheus and Alertmanager have extensive configuration options. All other components usually provide only the <code>nodeSelector</code> field for being deployed on a specified node.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="moving-monitoring-components-to-different-nodes-configuring-monitoring">Moving monitoring components to different nodes</h4>
+<div class="paragraph">
+<p>You can move the monitoring stack components to specific nodes.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>Make sure you have the <code>cluster-monitoring-config</code> ConfigMap object with the <code>data/config.yaml</code> section.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Start editing the <code>cluster-monitoring-config</code> ConfigMap:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc -n openshift-monitoring edit configmap cluster-monitoring-config</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Specify the <code>nodeSelector</code> constraint for the component under <code>data/config.yaml</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">data:
+ config.yaml: |
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+   name: cluster-monitoring-config
+   namespace: openshift-monitoring
+  data:
+   config.yaml: |
+     <strong><em>component</em></strong>:
+       nodeSelector:
+         <strong><em>node key</em></strong>: <strong><em>node value</em></strong>
+         <strong><em>node key</em></strong>: <strong><em>node value</em></strong>
+         <strong><em>...</em></strong></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Substitute <code>&lt;component&gt;</code> accordingly and substitute <code>&lt;node key&gt;: &lt;node value&gt;</code> with the map of key-value pairs that specifies the destination node. Often, only a single key-value pair is used.</p>
+</div>
+<div class="paragraph">
+<p>The component can only run on a node that has each of the specified key-value pairs as labels. The node can have additional labels as well.</p>
+</div>
+<div class="paragraph">
+<p>For example, to move the Prometheus and Alertmanager components to the node labeled <code>region: us</code>, use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">data:
+ config.yaml: |
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: cluster-monitoring-config
+    namespace: openshift-monitoring
+  data:
+    config.yaml: |+
+      <strong>alertmanagerMain:
+        nodeSelector:
+          region: us
+      prometheusK8s:
+        nodeSelector:
+          region: us</strong></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Apply the new configuration:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc -n openshift-monitoring apply configmap cluster-monitoring-config</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-persistent-storage">Configuring persistent storage</h4>
+<div class="paragraph">
+<p>Running cluster monitoring with persistent storage means that your metrics are stored to a Persistent Volume and can survive a pod being restarted or recreated. This is ideal if you require your metrics or alerting data to be guarded from data loss. For production environments, it is highly recommended to configure persistent storage.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>Dedicate sufficient persistent storage to ensure that the disk does not become full. How much storage you need depends on the number of pods. For information on system requirements for persistent storage, see <a href="https://access.redhat.com/documentation/en-us/openshift_enterprise/4.0/html-single/scalability_and_performance/#prometheus-database-storage-requirements">Prometheus database storage requirements</a>.</p>
+</li>
+<li>
+<p>Unless you enable dynamically-provisioned storage, make sure you have a Persistent Volume (PV) ready to be claimed by the Persistent Volume Claim (PVC), one PV for each replica. Since Prometheus has two replicas and Alertmanager has three replicas, you need five PVs to support the entire monitoring stack.</p>
+</li>
+<li>
+<p>Use the block type of storage.</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="configuring-a-persistent-volume-claim-configuring-monitoring">Configuring a persistent volume claim</h5>
+<div class="paragraph">
+<p>For the Prometheus or Alertmanager to use a persistent volume (PV), you first need to configure a persistent volume claim (PVC).</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>Make sure you have the necessary storage class configured.</p>
+</li>
+<li>
+<p>Make sure you have the <code>cluster-monitoring-config</code> ConfigMap object with the <code>data/config.yaml</code> section.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Edit the <code>cluster-monitoring-config</code> ConfigMap:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc -n openshift-monitoring edit configmap cluster-monitoring-config</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Put your PVC configuration for the component under <code>data/config.yaml</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">data:
+ config.yaml: |
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+   name: cluster-monitoring-config
+   namespace: openshift-monitoring
+  data:
+   config.yaml: |
+     <strong><em>component</em></strong>:
+       volumeClaimTemplate:
+         metadata:
+           name: <strong><em>PVC name</em></strong>
+         spec:
+           storageClassName: <strong><em>storage class</em></strong>
+           resources:
+             requests:
+               storage: <strong><em>40Gi</em></strong></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims">Kubernetes documentation on PersistentVolumeClaims</a> for information on how to specify <code>volumeClaimTemplate</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, to configure a PVC that claims any configured OpenShift Enterprise block PV as a persistent storage for Prometheus, use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">data:
+ config.yaml: |
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+   name: cluster-monitoring-config
+   namespace: openshift-monitoring
+  data:
+   config.yaml: |
+     <strong>prometheusK8s</strong>:
+       volumeClaimTemplate:
+         metadata:
+           name: <strong>my-prometheus-claim</strong>
+         spec:
+           storageClassName: <strong>gluster-block</strong>
+           resources:
+             requests:
+               storage: <strong>40Gi</strong></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And to configure a PVC that claims any configured OpenShift Enterprise block PV as a persistent storage for Alertmanager, you can use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">data:
+ config.yaml: |
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+   name: cluster-monitoring-config
+   namespace: openshift-monitoring
+  data:
+   config.yaml: |
+     <strong>alertmanagerMain</strong>:
+       volumeClaimTemplate:
+         metadata:
+           name: <strong>my-alertmanager-claim</strong>
+         spec:
+           storageClassName: <strong>gluster-block</strong>
+           resources:
+             requests:
+               storage: <strong>40Gi</strong></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Apply the new configuration:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ oc -n openshift-monitoring apply configmap cluster-monitoring-config</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring-alertmanager">Configuring Alertmanager</h4>
+<div class="paragraph">
+<p>The Prometheus Alertmanager is a component that manages incoming alerts, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Alert silencing</p>
+</li>
+<li>
+<p>Alert inhibition</p>
+</li>
+<li>
+<p>Alert aggregation</p>
+</li>
+<li>
+<p>Reliable deduplication of alerts</p>
+</li>
+<li>
+<p>Grouping alerts</p>
+</li>
+<li>
+<p>Sending grouped alerts as notifications through receviers such as email, PagerDuty, and HipChat</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="alertmanager-default-configuration-configuring-monitoring">Alertmanager default configuration</h5>
+<div class="paragraph">
+<p>The default configuration of the OpenShift Enterprise Monitoring Alertmanager cluster is this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">  global:
+    resolve_timeout: 5m
+  route:
+    group_wait: 30s
+    group_interval: 5m
+    repeat_interval: 12h
+    receiver: default
+    routes:
+    - match:
+        alertname: DeadMansSwitch
+      repeat_interval: 5m
+      receiver: deadmansswitch
+  receivers:
+  - name: default
+  - name: deadmansswitch</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>OpenShift Enterprise monitoring ships with a "Dead man’s switch" that always triggers by default to ensure the availability of the monitoring infrastructure.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="applying-custom-alertmanager-configuration-configuring-monitoring">Applying custom Alertmanager configuration</h5>
+<div class="paragraph">
+<p>You can overwrite the default Alertmanager configuration by editing the <code>alertmanager-main</code> secret inside the <code>openshift-monitoring</code> namespace.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Print the currently active Alertmanager configuration into file <code>alertmanager.yaml</code>:</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ oc -n openshift-monitoring get secret alertmanager-main -o=json | jq -r '.data["alertmanager.yaml"]' | base64 -d &gt; alertmanager.yaml</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Change the configuration in file <code>alertmanager.yaml</code> to your new configuration:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">data:
+ config.yaml: |
+  global:
+    resolve_timeout: 5m
+  route:
+    group_wait: 30s
+    group_interval: 5m
+    repeat_interval: 12h
+    receiver: default
+    routes:
+    - match:
+        alertname: DeadMansSwitch
+      repeat_interval: 5m
+      receiver: deadmansswitch
+    - match:
+        service: _your service_ <b class="conum">(1)</b>
+      routes:
+      - match:
+          _your matching rules_ <b class="conum">(2)</b>
+        receiver: _receiver_ <b class="conum">(3)</b>
+  receivers:
+  - name: default
+  - name: deadmansswitch
+  - name: _receiver_
+    _receiver configuration_</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><code>service</code> specifies the service that fires the alerts.</p>
+</li>
+<li>
+<p><code>&lt;your matching rules&gt;</code> specify the target alerts.</p>
+</li>
+<li>
+<p><code>receiver</code> specifies the receiver to use for the alert.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For example, this listing configures PagerDuty for notifications:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">data:
+ config.yaml: |
+  global:
+    resolve_timeout: 5m
+  route:
+    group_wait: 30s
+    group_interval: 5m
+    repeat_interval: 12h
+    receiver: default
+    routes:
+    - match:
+        alertname: DeadMansSwitch
+      repeat_interval: 5m
+      receiver: deadmansswitch
+    <strong>- match:
+        service: example-app
+      routes:
+      - match:
+          severity: critical
+        receiver: team-frontend-page</strong>
+  receivers:
+  - name: default
+  - name: deadmansswitch
+  <strong>- name: team-frontend-page
+    pagerduty_configs:
+    - service_key: "<em>your-key</em>"</strong></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With this configuration, alerts of <code>critical</code> severity fired by the <code>example-app</code> service are sent using the <code>team-frontend-page</code> receiver, which means that these alerts are paged to a chosen person.</p>
+</div>
+</li>
+<li>
+<p>Apply the new configuration in the file:</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ oc -n openshift-monitoring create secret generic alertmanager-main --from-literal=alertmanager.yaml="$(&lt; alertmanager.yaml)" --dry-run -o=yaml | oc -n openshift-monitoring replace secret --filename=-</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="ulist">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>See <a href="https://www.pagerduty.com/">the PagerDuty official site</a> for more information on PagerDuty.</p>
+</li>
+<li>
+<p>See <a href="https://www.pagerduty.com/docs/guides/prometheus-integration-guide/">the PagerDuty Prometheus Integration Guide</a> to learn how to retrieve the <code>service_key</code>.</p>
+</li>
+<li>
+<p>See <a href="https://prometheus.io/docs/alerting/configuration/">Alertmanager configuration</a> for configuring alerting through different alert receivers.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="alerting-rules-configuring-monitoring">Alerting rules</h5>
+<div class="paragraph">
+<p>OpenShift Enterprise Cluster Monitoring by default ships with a set of pre-defined alerting rules.</p>
+</div>
+<div class="paragraph">
+<p>Note that:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The default alerting rules are used specifically for the OpenShift Enterprise cluster and nothing else. For example, you get alerts for a persistent volume in the cluster, but you do not get them for persistent volume in your custom namespace.</p>
+</li>
+<li>
+<p>Currently you cannot add custom alerting rules.</p>
+</li>
+<li>
+<p>Some alerting rules have identical names. This is intentional. They are sending alerts about the same event with different thresholds, with different severity, or both.</p>
+</li>
+<li>
+<p>With the inhibition rules, the lower severity is inhibited when the higher severity is firing.</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>See also <a href="https://prometheus.io/docs/alerting/alertmanager/">the Alertmanager documentation</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="managing-alerts-using-alertmanager-ui">Managing alerts using Alertmanager UI</h3>
+<div class="paragraph">
+<p>OpenShift Enterprise 4 provides a Web interface to the Alertmanager, which enables you to manage alerts. This section demonstrates how to use the Alertmanager UI.</p>
+</div>
+<div class="sect3">
+<h4 id="contents-of-alertmanager-ui-managing-alerts">Contents of Alertmanager UI</h4>
+<div class="paragraph">
+<p>This section shows and explains the contents of the Alertmanager UI.</p>
+</div>
+<div class="paragraph">
+<p>The main two pages of the Alertmanager UI are the <strong>Alerts</strong> and the <strong>Silences</strong> pages.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>Alerts</strong> page is located in <strong>Monitoring</strong> &#8594; <strong>Alerts</strong> of the OpenShift Enterprise web console.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/alerts-screen.png" alt="alerts screen">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Filtering alerts by their names.</p>
+</li>
+<li>
+<p>Filtering the alerts by their states. To fire, some alerts need a certain condition to be true for the duration of a timeout. If a condition of an alert is currently true, but the timeout has not been reached, such an alert is in the <strong>Pending</strong> state.</p>
+</li>
+<li>
+<p>Alert name.</p>
+</li>
+<li>
+<p>Description of an alert.</p>
+</li>
+<li>
+<p>Current state of the alert and when the alert went into this state.</p>
+</li>
+<li>
+<p>Value of the Severity label of the alert.</p>
+</li>
+<li>
+<p>Actions you can do with the alert.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <strong>Silences</strong> page is located in <strong>Monitoring</strong> &#8594; <strong>Silences</strong> of the OpenShift Enterprise web console.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/silences-screen.png" alt="silences screen">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Creating a silence for an alert.</p>
+</li>
+<li>
+<p>Filtering silences by their name.</p>
+</li>
+<li>
+<p>Filtering silences by their states. If a silence is pending, it is currently not active because it is scheduled to start at a later time.</p>
+</li>
+<li>
+<p>Description of a silence. It includes the specification of alerts that it matches.</p>
+</li>
+<li>
+<p>Current state of the silence. For active silences, it shows when it ends, and for pending silences, it shows when it starts.</p>
+</li>
+<li>
+<p>Number of alerts that are being silenced by the silence.</p>
+</li>
+<li>
+<p>Actions you can do with a silence.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting-information-about-alerts-and-alerting-rules-managing-alerts">Getting information about alerts and alerting rules</h4>
+<div class="paragraph">
+<p>You can find an alert and see information about it or its governing alerting rule.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Open the OpenShift Enterprise web console and navigate to <strong>Monitoring</strong> &#8594; <strong>Alerts</strong>.</p>
+</li>
+<li>
+<p>Optionally, filter the alerts by name using the <strong>Filter alerts by name</strong> field.</p>
+</li>
+<li>
+<p>Optionally, filter the alerts by state using one or more of the state buttons <strong>Firing</strong>, <strong>Silenced</strong>, <strong>Pending</strong>, <strong>Not firing</strong>.</p>
+</li>
+<li>
+<p>Optionally, sort the alerts by clicking one or more of the <strong>Name</strong>, <strong>State</strong>, and <strong>Severity</strong> column headers.</p>
+</li>
+<li>
+<p>After you see the alert, you can see either details of the alert or details of its governing alerting rule.</p>
+<div class="paragraph">
+<p>To see alert details, click on the name of the alert. This is the page with alert details:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/alert-overview.png" alt="alert overview">
+</div>
+</div>
+<div class="paragraph">
+<p>The page has the graph with timeseries of the alert. It also has information about the alert, including:</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>A link to its governing alerting rule</p>
+</li>
+<li>
+<p>Description of the alert</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To see alerting rule details, click the button in the last column and select <strong>View Alerting Rule</strong>. This is the page with alerting rule details:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/alerting-rule-overview.png" alt="alerting rule overview">
+</div>
+</div>
+<div class="paragraph">
+<p>The page has information about the alerting rule, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Alerting rule name, severity, and description</p>
+</li>
+<li>
+<p>The expression that defines the condition for firing the alert</p>
+</li>
+<li>
+<p>The time for which the condition should be true for an alert to fire</p>
+</li>
+<li>
+<p>Graph for each alert governed by the alerting rule, showing the value with which the alert is firing</p>
+</li>
+<li>
+<p>Table of all alerts governed by the alerting rule</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="monitoring-silencing-alerts-managing-alerts">Silencing alerts</h4>
+<div class="paragraph">
+<p>You can either silence a specific alert or silence alerts that match a specification that you define.</p>
+</div>
+<div class="paragraph">
+<div class="title">Procedure</div>
+<p>To silence a set of alerts by creating an alert specification:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the <strong>Monitoring</strong> &#8594; <strong>Silences</strong> page of the OpenShift Enterprise web console.</p>
+</li>
+<li>
+<p>Click <strong>Create Silence</strong>.</p>
+</li>
+<li>
+<p>Populate the <strong>Create Silence</strong> form.</p>
+</li>
+<li>
+<p>To create the silence, click <strong>Create</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To silence a specific alert:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the <strong>Monitoring</strong> &#8594; <strong>Alerts</strong> page of the OpenShift Enterprise web console.</p>
+</li>
+<li>
+<p>For the alert that you want to silence, click the button in the last column and click <strong>Silence Alert</strong>. The <strong>Create Silence</strong> form will appear with prepopulated specification of the chosen alert.</p>
+</li>
+<li>
+<p>Optionally, modify the silence.</p>
+</li>
+<li>
+<p>To create the silence, click <strong>Create</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="getting-information-about-silences-managing-alerts">Getting information about silences</h4>
+<div class="paragraph">
+<p>You can find a silence and view its details.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Open the OpenShift Enterprise web console and navigate to <strong>Monitoring</strong> &#8594; <strong>Silences</strong>.</p>
+</li>
+<li>
+<p>Optionally, filter the silences by name using the <strong>Filter Silences by name</strong> field.</p>
+</li>
+<li>
+<p>Optionally, filter the silences by state using one or more of the state buttons <strong>Active</strong>, <strong>Pending</strong>, <strong>Expired</strong>.</p>
+</li>
+<li>
+<p>Optionally, sort the silences by clicking one or more of the <strong>Name</strong>, <strong>State</strong>, and <strong>Firing alerts</strong> column headers.</p>
+</li>
+<li>
+<p>After you see the silence, you can click its name to see the details, including:</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Alert specification</p>
+</li>
+<li>
+<p>State</p>
+</li>
+<li>
+<p>Start time</p>
+</li>
+<li>
+<p>End time</p>
+</li>
+<li>
+<p>Number and list of firing alerts</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="editing-silences-managing-alerts">Editing silences</h4>
+<div class="paragraph">
+<p>You can edit a silence, which will expire the existing silence and create a new silence with the changed configuration.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Navigate to the <strong>Monitoring</strong> &#8594; <strong>Silences</strong> screen.</p>
+</li>
+<li>
+<p>For the silence you want to modify, click the button in the last column and click <strong>Edit silence</strong>.</p>
+<div class="paragraph">
+<p>Alternatively, you can click <strong>Actions</strong> &#8594; <strong>Edit Silence</strong> in the <strong>Silence Overview</strong> screen for a particular silence.</p>
+</div>
+</li>
+<li>
+<p>In the <strong>Edit Silence</strong> screen, enter your changes and click the <strong>Save</strong> button. This will expire the existing silence and create one with the chosen configuration.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="expiring-silences-managing-alerts">Expiring silences</h4>
+<div class="paragraph">
+<p>You can expire a silence. Expiring a silence deactivates it forever.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Navigate to the <strong>Monitoring</strong> &#8594; <strong>Silences</strong> page.</p>
+</li>
+<li>
+<p>For the silence you want to expire, click the button in the last column and click <strong>Expire Silence</strong>.</p>
+<div class="paragraph">
+<p>Alternatively, you can click the <strong>Actions</strong> &#8594; <strong>Expire Silence</strong> button in the <strong>Silence Overview</strong> page for a particular silence.</p>
+</div>
+</li>
+<li>
+<p>Confirm by clicking <strong>Expire Silence</strong>. This expires the silence.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="accessing-prometheus">Accessing Prometheus, Alertmanager, and Grafana</h3>
+<div class="paragraph">
+<p>To work with data gathered by the monitoring stack, you might want to use the Prometheus, Alertmanager, and Grafana interfaces. They are available by default.</p>
+</div>
+<div class="sect3">
+<h4 id="monitoring-accessing-prometheus-alertmanager-grafana-accessing-prometheus">Accessing Prometheus, Alertmanager, and Grafana</h4>
+<div class="paragraph">
+<p>You can access Prometheus, Alertmanager, and Grafana web UIs using the <code>oc</code> tool and a Web browser.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>Authentication is performed against the OpenShift Enterprise identity and uses the same credentials or means of authentication as is used elsewhere in OpenShift Enterprise. You need to use a role that has read access to all namespaces, such as the <code>cluster-monitoring-view</code> cluster role.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Run:</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ oc -n openshift-monitoring get routes
+NAME                HOST/PORT                                                     ...
+alertmanager-main   alertmanager-main-openshift-monitoring.apps.<em>url</em>.openshift.com ...
+grafana             grafana-openshift-monitoring.apps.<em>url</em>.openshift.com           ...
+prometheus-k8s      prometheus-k8s-openshift-monitoring.apps.<em>url</em>.openshift.com    ...</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Prepend <code>https://</code> to the address, you cannot access web UIs using unencrypted connection.</p>
+<div class="paragraph">
+<p>For example, this is the resulting URL for Alertmanager:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">https://alertmanager-main-openshift-monitoring.apps.<em>url</em>.openshift.com</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Navigate to the address using a Web browser and authenticate.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="application-monitoring">Application monitoring</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can configure custom metrics scraping for your applications. For that, you deploy the Prometheus Operator for the cluster and a custom Prometheus instance and Alertmanager instance in the namespace where your application is.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Important</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Application monitoring is a Technology Preview release only. Technology Preview releases
+are not supported with Red Hat production service-level agreements (SLAs) and
+might not be functionally complete, and Red Hat does not recommend using them
+for production. These features provide early access to upcoming product
+features, enabling customers to test functionality and provide feedback during
+the development process. For more information see
+<a href="https://access.redhat.com/support/offerings/techpreview/">Red Hat Technology
+Preview Features Support Scope</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="configuring-cluster-for-application-monitoring-application-monitoring">Configuring cluster for application monitoring</h3>
+<div class="paragraph">
+<p>Before application developers can monitor their applications, the human operator of the cluster needs to configure the cluster accordingly. This procedure shows how to.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>You need to log in as a user belonging to a role with administrative privileges for the cluster.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In the OpenShift Enterprise web console, navigate to <strong>Catalog</strong> &#8594; <strong>Operator Hub</strong> and install the Prometheus Operator.</p>
+</li>
+<li>
+<p>Navigate to <strong>Catalog</strong> &#8594; <strong>Developer Catalog</strong> and install Prometheus and Alertmanager on the namespace you choose.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="configuring-monitoring-for-an-application-application-monitoring">Configuring monitoring for an application</h3>
+<div class="paragraph">
+<p>This procedure shows, on an example, how an application developer can deploy an application and configure monitoring for it.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>Make sure you configured the cluster for application monitoring. In this example, it is presumed that Prometheus and Alertmanager instances were installed in the <code>default</code> namespace.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Create a YAML file for your configuration. In this example, it is called <code>deploy.yaml</code>.</p>
+</li>
+<li>
+<p>Add configuration for deploying a sample application:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: example-app
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: example-app
+    spec:
+      containers:
+      - name: example-app
+        image: quay.io/coreos/prometheus-example-app
+        ports:
+        - name: web
+          containerPort: 8080</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add configuration for exposing the sample application as a service:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">kind: Service
+apiVersion: v1
+metadata:
+  name: example-app
+  namespace: default
+  labels:
+    tier: frontend
+spec:
+  selector:
+    app: example-app
+  ports:
+  - name: web
+    port: 8080</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add configuration for creating a service monitor for the sample application. This will add your application as a target for monitoring:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: example-app
+  namespace: default
+  labels:
+    k8s-app: example-app
+spec:
+  selector:
+    matchLabels:
+      tier: frontend
+  endpoints:
+  - port: web</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Apply the configuration file to the cluster:</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ oc apply -f deploy.yaml</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Forward a port to the Prometheus UI. In this example, port 9090 is used:</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ oc port-forward svc/prometheus-operated 9090</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Navigate to the Prometheus UI at <a href="http://localhost:9090/targets" class="bare">http://localhost:9090/targets</a> to see the sample application being monitored.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exposing-custom-application-metrics-for-horizontal-pod-autoscaling-application-monitoring">Exposing custom application metrics for horizontal pod autoscaling</h3>
+<div class="paragraph">
+<p>You can use the <code>prometheus-adapter</code> resource to expose custom application metrics for the horizontal pod autoscaler.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>Make sure you configured the cluster for application monitoring. In this example, it is presumed that Prometheus and Alertmanager instances were installed in the <code>default</code> namespace.</p>
+</li>
+<li>
+<p>Make sure you configured monitoring for your application monitoring. In this example, it is presumed that the application and the service monitor for it were installed in the <code>default</code> namespace.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Create a YAML file for your configuration. In this example, it is called <code>deploy.yaml</code>.</p>
+</li>
+<li>
+<p>Add configuration for creating the service account, necessary roles, and role bindings for <code>prometheus-adapter</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">  kind: ServiceAccount
+  apiVersion: v1
+  metadata:
+    name: custom-metrics-apiserver
+    namespace: default
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: custom-metrics-server-resources
+  rules:
+  - apiGroups:
+    - custom.metrics.k8s.io
+    resources: ["*"]
+    verbs: ["*"]
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: custom-metrics-resource-reader
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - namespaces
+    - pods
+    - services
+    verbs:
+    - get
+    - list
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: custom-metrics:system:auth-delegator
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: system:auth-delegator
+  subjects:
+  - kind: ServiceAccount
+    name: custom-metrics-apiserver
+    namespace: default
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    name: custom-metrics-auth-reader
+    namespace: kube-system
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: extension-apiserver-authentication-reader
+  subjects:
+  - kind: ServiceAccount
+    name: custom-metrics-apiserver
+    namespace: default
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: custom-metrics-resource-reader
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: custom-metrics-resource-reader
+  subjects:
+  - kind: ServiceAccount
+    name: custom-metrics-apiserver
+    namespace: default
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: hpa-controller-custom-metrics
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: custom-metrics-server-resources
+  subjects:
+  - kind: ServiceAccount
+    name: horizontal-pod-autoscaler
+    namespace: kube-system</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add configuration for the custom metrics for <code>prometheus-adapter</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: adapter-config
+    namespace: default
+  data:
+    config.yaml: |
+      rules:
+      - seriesQuery: 'http_requests_total{namespace!="",pod!=""}'
+        resources:
+          overrides:
+            namespace: {resource: "namespace"}
+            pod: {resource: "pod"}
+            service: {resource: "service"}
+        name:
+          matches: "^(.*)_total"
+          as: "${1}_per_second"
+        metricsQuery: 'sum(rate(&lt;&lt;.Series&gt;&gt;{&lt;&lt;.LabelMatchers&gt;&gt;}[2m])) by (&lt;&lt;.GroupBy&gt;&gt;)'</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add configuration for registering <code>prometheus-adapter</code> as an API service:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">  apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      service.alpha.openshift.io/serving-cert-secret-name: prometheus-adapter-tls
+    labels:
+      name: prometheus-adapter
+    name: prometheus-adapter
+    namespace: default
+  spec:
+    ports:
+    - name: https
+      port: 443
+      targetPort: 6443
+    selector:
+      app: prometheus-adapter
+    type: ClusterIP
+  ---
+  apiVersion: apiregistration.k8s.io/v1beta1
+  kind: APIService
+  metadata:
+    name: v1beta1.custom.metrics.k8s.io
+  spec:
+    service:
+      name: prometheus-adapter
+      namespace: default
+    group: custom.metrics.k8s.io
+    version: v1beta1
+    insecureSkipTLSVerify: true
+    groupPriorityMinimum: 100
+    versionPriority: 100
+  ---</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add configuration for deploying <code>prometheus-adapter</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight nowrap"><code class="language-yaml" data-lang="yaml">  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    labels:
+      app: prometheus-adapter
+    name: prometheus-adapter
+    namespace: default
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: prometheus-adapter
+    template:
+      metadata:
+        labels:
+          app: prometheus-adapter
+        name: prometheus-adapter
+      spec:
+        serviceAccountName: custom-metrics-apiserver
+        containers:
+        - name: prometheus-adapter
+          image: directxman12/k8s-prometheus-adapter-amd64
+          args:
+          - --secure-port=6443
+          - --tls-cert-file=/var/run/serving-cert/tls.crt
+          - --tls-private-key-file=/var/run/serving-cert/tls.key
+          - --logtostderr=true
+          - --prometheus-url=http://prometheus-operated.default.svc:9090/
+          - --metrics-relist-interval=1m
+          - --v=4
+          - --config=/etc/adapter/config.yaml
+          ports:
+          - containerPort: 6443
+          volumeMounts:
+          - mountPath: /var/run/serving-cert
+            name: volume-serving-cert
+            readOnly: true
+          - mountPath: /etc/adapter/
+            name: config
+            readOnly: true
+          - mountPath: /tmp
+            name: tmp-vol
+        volumes:
+        - name: volume-serving-cert
+          secret:
+            secretName: prometheus-adapter-tls
+        - name: config
+          configMap:
+            name: adapter-config
+        - name: tmp-vol
+          emptyDir: {}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Apply the configuration file to the cluster:</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ oc apply -f deploy.yaml</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now the application&#8217;s metrics are exposed and can be used to configure horizontal pod autoscaling.</p>
+</li>
+</ol>
+</div>
+<div class="ulist">
+<div class="title">Additional resources</div>
+<ul>
+<li>
+<p>For information about Horizontal Pod Autoscaler, see <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale">the Kubernetes documentation</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2019-04-12 23:56:12 UTC
+</div>
+</div>
+</body>
+</html>
